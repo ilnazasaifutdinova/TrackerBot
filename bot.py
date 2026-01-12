@@ -1,6 +1,6 @@
 import os
 
-# Ensure certifi's CA bundle is used before any networking libraries import SSL.
+# Перед импортом SSL любыми сетевыми библиотеками проверяет, что используется пакет сертификатов CA от certifi
 try:
     import certifi
     os.environ.setdefault("SSL_CERT_FILE", certifi.where())
@@ -14,13 +14,15 @@ import discord
 from discord.ext import tasks
 from dotenv import load_dotenv
 
+# Загрузка .env файла
 load_dotenv()
 
+# Загрузка переменных окружения
 TOKEN = os.getenv('DISCORD_TOKEN')
 CHANNEL_ID = int(os.getenv('CHANNEL_ID'))
 
 # Ссылка на ресурс
-url = "https://qiscans.org/series/the-strongest-outcast"
+url = os.getenv('MANGA_URL')
 
 # Добавляем заголовки (притворяемся браузером)
 headers = {
@@ -361,8 +363,8 @@ def get_manga_details():
 
 
 @client.event
+# Событие когда бот запустился
 async def on_ready():
-    """Событие когда бот запустился"""
     global total_chapters
 
     print(f"Бот запущен как {client.user}")
