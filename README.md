@@ -29,7 +29,7 @@ MANGA_URL=https://ваша-манга
 
 ## Run
 ```bash
-python bot.py
+python3 bot.py
 ```
 
 ## License
