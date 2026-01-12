@@ -363,8 +363,8 @@ def get_manga_details():
 
 
 @client.event
+# Событие когда бот запустился
 async def on_ready():
-    """Событие когда бот запустился"""
     global total_chapters
 
     print(f"Бот запущен как {client.user}")
